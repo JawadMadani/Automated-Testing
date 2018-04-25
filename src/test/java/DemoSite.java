@@ -16,7 +16,7 @@ import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 
-public class ExtentReport {
+public class DemoSite {
 
     private WebDriver webDriver;
     private static final String BASE_URL = "http://thedemosite.co.uk";
@@ -28,10 +28,11 @@ public class ExtentReport {
     @BeforeClass
     public static void init() {
         extent = new ExtentReports();
-        String fileName = "MyReport" + ".html";
+        String fileName = "DemoSiteReport" + ".html";
         String filePath = System.getProperty("user.dir")
                 + File.separatorChar + fileName;
         extent.attachReporter(new ExtentHtmlReporter(filePath));
+        test = extent.createTest("MyFirstTest");
     }
 
 
@@ -41,7 +42,7 @@ public class ExtentReport {
         webDriver = new ChromeDriver();
         webDriver.navigate().to(BASE_URL);
 //        webDriver.navigate().to("https://facebook.com");
-//        test.log(Status.INFO, "Browser lunched Successfully");
+        test.log(Status.INFO, "Browser lunched Successfully");
     }
 
 
@@ -67,7 +68,7 @@ public class ExtentReport {
         String passwordInput1 = newArray[1];
 
 
-        test = extent.createTest("MyFirstTest");
+        
         test.log(Status.INFO, "My First Test is Starting ");
 
 
@@ -126,7 +127,7 @@ public class ExtentReport {
 
     @After
     public void cleanUp(){
-//        webDriver.quit();
+        webDriver.quit();
         //test.log(Status.INFO,"Browser closed successfully");
     }
 
