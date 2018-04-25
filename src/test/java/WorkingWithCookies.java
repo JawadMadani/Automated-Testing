@@ -47,13 +47,6 @@ public class WorkingWithCookies {
     }
 
 
-    @Test
-    public void testTabs() {
-    	
-      
-      
-    }
-    
 
     @After
     public void cleanUp(){
