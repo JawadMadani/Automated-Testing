@@ -50,12 +50,14 @@ public class DemoQA {
     @Test
     public void testTabs() {
       driver.get("http://www.demoqa.com/");
-      test.log(Status.INFO, "Browser lunched Successfully");
+      test.log(Status.INFO, "Website opened Successfully");
       driver.findElement(By.cssSelector("img")).click();
+      test.log(Status.INFO, "Clicking on different tabs");
       driver.findElement(By.id("ui-id-2")).click();
       driver.findElement(By.id("ui-id-3")).click();
       driver.findElement(By.id("ui-id-4")).click();
       driver.findElement(By.id("ui-id-5")).click();
+      test.log(Status.INFO, "clicking were done Successfully");
       
       
       driver.findElement(By.cssSelector("#menu-item-140 > a")).click();
@@ -63,27 +65,28 @@ public class DemoQA {
       mouseDriver.moveToElement(box);
 //      mouseDriver.dragAndDropBy(box, 450, 0).pause(1000).dragAndDropBy(box, -450, 200).pause(1000).dragAndDropBy(box, 450, 0).pause(1000).perform();
       mouseDriver.dragAndDropBy(box, 52, 209).perform();
+      test.log(Status.INFO, "Box was dragged to a different location successfully");
       
       
       driver.findElement(By.xpath("//*[@id=\"ui-id-2\"]")).click();
       WebElement boxHorizontal=driver.findElement(By.xpath("//*[@id=\"draggabl2\"]"));
       WebElement boxVertical = driver.findElement(By.xpath("//*[@id=\"draggabl\"]/p"));
       mouseDriver.dragAndDropBy(boxVertical,100,100).dragAndDropBy(boxHorizontal,100,100).perform();
+      test.log(Status.INFO, "One boxes moved horizentally and the other one vertically");
       
       
       driver.findElement(By.xpath("//*[@id=\"menu-item-141\"]")).click();
       WebElement boxMoveFrom = driver.findElement(By.xpath("//*[@id=\"draggableview\"]"));
       WebElement boxMoveTo = driver.findElement(By.xpath("//*[@id=\"droppableview\"]"));
       mouseDriver.dragAndDrop(boxMoveFrom, boxMoveTo).perform();
-      
-      
+      test.log(Status.INFO, "Box has been dragged to the required location successfully");
       
     }
     
 
     @After
     public void cleanUp(){
-//        webDriver.quit();
+        driver.quit();
         test.log(Status.INFO,"Browser closed successfully");
     }
 

@@ -128,7 +128,7 @@ public class DemoSite {
     @After
     public void cleanUp(){
         webDriver.quit();
-        //test.log(Status.INFO,"Browser closed successfully");
+        test.log(Status.INFO,"Browser closed successfully");
     }
 
     @AfterClass
